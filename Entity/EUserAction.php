@@ -68,6 +68,13 @@
      protected $updated=false;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="lastupdate", type="integer", nullable=true)
+     */
+     protected $lastupdate=0;
+
+    /**
      * Set entities_involved
      *
      * @param string $entitiesInvolved
