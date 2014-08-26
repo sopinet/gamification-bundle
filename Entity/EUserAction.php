@@ -60,6 +60,12 @@
 	 */
 	 protected $sequences;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="updated", type="boolean", nullable=true)
+     */
+     protected $updated=false;
 
     /**
      * Set entities_involved
