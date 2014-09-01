@@ -208,7 +208,7 @@ class GamificationHelper {
 		$userextend = $this->_getSopinetUserExtend($user);
 
 		$reUserActions = $em->getRepository("SopinetGamificationBundle:EUserAction");
-		$userActions=$reUserActions->findBy(array('sopinetuserextends' => $userextend));
+		$userActions= $reUserActions->findBy(array('sopinetuserextends' => $userextend),Array('createdAt' => 'DESC'));
 
 		return array('actions' => $userActions);
 	}
@@ -251,6 +251,7 @@ class GamificationHelper {
 			//se comprubeba si con el incremento seria mayor que el limite
 			if($points_acumulated<$action->getPointsRestriction())$lastAction->setAcumulated($acumulated+$value);
 			else $lastAction->setAcumulated($action->getPointsRestriction()/$action->getPoints());
+			$lastAction->setUpdated(false);
 			$em->persist($lastAction);
 			$em->flush();	
 			return $lastAction;
